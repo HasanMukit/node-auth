@@ -1,0 +1,49 @@
+@refres_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiODAxMzgyZmYtNTZmNS00NWM3LTk0ZTEtN2FjOGE1MmMwMjM3IiwiYnBfdXNlcl9uYW1lIjoibXVraXQiLCJicF91c2VyX2NvZGUiOiJhc2Rmc2RmIiwiYnBfdXNlcl9hZG1pbiI6dHJ1ZSwiaWF0IjoxNjUwMzY2MDI0LCJleHAiOjE2NTAzNjk2MjR9.TpzGVKnX-wGn0TcyNXKJH9QbH7EFrCILGVdsdafOxos
+
+###
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+    "bp_user_code":"asdfsdf",
+    "bp_user_password":"asdf1234"
+}
+
+###
+GET http://localhost:5000/api/auth/refresh_token
+
+###
+DELETE  http://localhost:5000/api/auth/refresh_token
+
+POST http://localhost:5000/api/users
+Content-Type: application/json
+Authorization: Bearer {{refres_token}}
+
+{
+    "bp_user_name":"mukit2",
+    "bp_user_code":"notadmin",
+    "bp_user_territory":"fgfdgdfgd",
+    "bp_user_town":"dfgdghdfg",
+    "bp_user_touchPoint":"dfgdghdfgd",
+    "bp_user_password":"asdf12341234"
+}
+
+###
+
+GET http://localhost:5000/api/users
+Authorization: Bearer {{refres_token}}
+
+###
+POST http://localhost:5000/api/consumers
+Content-Type: application/json
+Authorization: Bearer {{refres_token}}
+
+{
+    "consumer_name":"zeeshan",
+    "consumer_dob":"17 august",
+    "consumer_phn":"0181231231"
+}
+
+###
+GET http://localhost:5000/api/consumers
+Authorization: Bearer {{refres_token}}
